@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QuerySessionRoot</class>
+ <widget class="QWidget" name="QuerySessionRoot">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>637</width>
+    <height>556</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <layout class="QVBoxLayout" name="verticalLayout_Left">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Explorer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="treeWidgetDatabaseExplorer">
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_Middle">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_AvailableConnectionsWrapper">
+         <item>
+          <widget class="QLabel" name="label_AvailableConnections">
+           <property name="text">
+            <string>Connections</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBoxAvailableConns"/>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_QueryCommandsWrapper">
+           <item>
+            <widget class="QPushButton" name="pushButtonExecuteQuery">
+             <property name="text">
+              <string>execute</string>
+             </property>
+             <property name="shortcut">
+              <string>Ctrl+Return</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonCommit">
+             <property name="text">
+              <string>commit</string>
+             </property>
+             <property name="shortcut">
+              <string>Ctrl+Shift+Return</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonRollback">
+             <property name="text">
+              <string>rollback</string>
+             </property>
+             <property name="shortcut">
+              <string>Ctrl+Shift+R</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QSplitter" name="splitter">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QWidget" name="widgetQueryEditorWrapper" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_QueryEditor">
+               <property name="text">
+                <string>Query Editor</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPlainTextEdit" name="plainTextEditQueryEditor"/>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="widgetQueryResultWrapper" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QTabWidget" name="tabWidgetPostQueryExecution">
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <widget class="QWidget" name="tabQueryResult">
+                <attribute name="title">
+                 <string>Results</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <item>
+                  <widget class="QTableWidget" name="tableWidgetQueryResult"/>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tabQueryError">
+                <attribute name="title">
+                 <string>Errors</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QTextEdit" name="textEditQueryError"/>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>comboBoxAvailableConns</sender>
+   <signal>activated(int)</signal>
+   <receiver>QuerySessionRoot</receiver>
+   <slot>selectedConnChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>159</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonExecuteQuery</sender>
+   <signal>clicked()</signal>
+   <receiver>QuerySessionRoot</receiver>
+   <slot>executeQuery()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>159</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>selectedConnChanged(int)</slot>
+  <slot>executeQuery()</slot>
+ </slots>
+</ui>

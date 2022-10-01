@@ -1,0 +1,15 @@
+ODBC_POSTGRESQL = 'psqlodbc'
+ODBC_SQLITE = 'SQLite'
+
+ODBC_DRIVERS = [
+    ODBC_POSTGRESQL,
+    ODBC_SQLITE,
+    ]
+
+SQL_DRIVER_TO_LABEL = {
+    ODBC_POSTGRESQL: 'Postgres (ODBC)',
+    ODBC_SQLITE: 'SQLite (ODBC)',
+    }
+
+LABEL_TO_SQL_DRIVER = {t[1]: t[0] for t in SQL_DRIVER_TO_LABEL.items()}
+
